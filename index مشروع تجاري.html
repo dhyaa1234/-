@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProTemplate Hub | منصة القوالب الاحترافية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --danger-color: #f72585;
+            --warning-color: #f8961e;
+            --info-color: #4895ef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #f8f9fa;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .dark-mode header {
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-icon {
+            padding: 8px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .category-btn {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .dark-mode .category-btn {
+            background-color: #1e1e1e;
+            border-color: #333;
+            color: #f8f9fa;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Templates Grid */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .template-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .dark-mode .template-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .template-image {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .template-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .template-card:hover .template-image img {
+            transform: scale(1.05);
+        }
+
+        .template-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+        }
+
+        .template-content {
+            padding: 15px;
+        }
+
+        .template-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .dark-mode .template-title {
+            color: #f8f9fa;
+        }
+
+        .template-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .author-avatar {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .template-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .dark-mode .template-stats {
+            color: #aaa;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .template-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .dark-mode .template-description {
+            color: #aaa;
+        }
+
+        .template-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-price {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .download-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 6px 12px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-mode .modal-content {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dark-mode .modal-header {
+            border-bottom-color: #333;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+            transition: var(--transition);
+        }
+
+        .dark-mode .close-modal {
+            color: #aaa;
+        }
+
+        .close-modal:hover {
+            color: var(--danger-color);
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .dark-mode .modal-image {
+            background-color: #2a2a2a;
+        }
+
+        .modal-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: var(--border-radius);
+        }
+
+        .dark-mode .meta-item {
+            background-color: #2a2a2a;
+        }
+
+        .meta-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .dark-mode .meta-label {
+            color: #aaa;
+        }
+
+        .meta-value {
+            font-weight: 500;
+        }
+
+        .modal-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .dark-mode .modal-footer {
+            border-top-color: #333;
+        }
+
+        /* Upload Modal */
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .dark-mode .form-control {
+            background-color: #2a2a2a;
+            border-color: #333;
+            color: #f8f9fa;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            border: 2px dashed #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .dark-mode .file-upload {
+            border-color: #333;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .dark-mode .file-name {
+            color: #aaa;
+        }
+
+        /* Auth Modal */
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode .auth-tabs {
+            border-bottom-color: #333;
+        }
+
+        .auth-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+
+        .auth-tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .dark-mode .form-footer {
+            color: #aaa;
+        }
+
+        .switch-auth {
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-mode .admin-panel {
+            background-color: #1a1a1a;
+            border-left: 1px solid #333;
+        }
+
+        .admin-panel.active {
+            right: 0;
+        }
+
+        .admin-header {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dark-mode .admin-header {
+            border-bottom-color: #333;
+        }
+
+        .admin-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .admin-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        .dark-mode .admin-close {
+            color: #aaa;
+        }
+
+        .admin-nav {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dark-mode .admin-nav {
+            border-bottom-color: #333;
+        }
+
+        .admin-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .admin-nav-item {
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-nav-item:hover, .admin-nav-item.active {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+
+        .dark-mode .admin-nav-item:hover, 
+        .dark-mode .admin-nav-item.active {
+            background-color: rgba(67, 97, 238, 0.2);
+        }
+
+        .admin-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .dark-mode .stat-card {
+            background-color: #2a2a2a;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .dark-mode .stat-label {
+            color: #aaa;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dark-mode .admin-table th, 
+        .dark-mode .admin-table td {
+            border-bottom-color: #333;
+        }
+
+        .admin-table th {
+            background-color: #f8f9fa;
+            font-weight: 500;
+        }
+
+        .dark-mode .admin-table th {
+            background-color: #2a2a2a;
+        }
+
+        .status-published {
+            color: var(--success-color);
+        }
+
+        .status-pending {
+            color: var(--warning-color);
+        }
+
+        .status-rejected {
+            color: var(--danger-color);
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            color: #6c757d;
+            transition: var(--transition);
+        }
+
+        .dark-mode .action-btn {
+            color: #aaa;
+        }
+
+        .action-btn:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .dark-mode footer {
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #adb5bd;
+        }
+
+        .dark-mode .copyright {
+            border-top-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .templates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .admin-panel {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                width: 95%;
+            }
+
+            .modal-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-cubes"></i>
+                    <span>ProTemplate Hub</span>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#">الرئيسية</a>
+                    <a href="#">استكشف</a>
+                    <a href="#">المميزات</a>
+                    <a href="#">التسعير</a>
+                    
+                    <div class="auth-buttons" id="authButtons">
+                        <button class="btn btn-outline" id="loginBtn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>تسجيل الدخول</span>
+                        </button>
+                        <button class="btn btn-primary" id="registerBtn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>حساب جديد</span>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-buttons" id="adminButtons" style="display: none;">
+                        <button class="btn btn-icon" id="adminPanelBtn" title="لوحة التحكم">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <button class="btn btn-icon" id="adminLogoutBtn" title="تسجيل الخروج">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                    
+                    <button class="btn btn-icon" id="modeToggle" title="تبديل الوضع">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>اكتشف أفضل القوالب الاحترافية</h1>
+            <p>منصة متكاملة لتحميل ومشاركة القوالب الجاهزة لمواقع الويب، العروض التقديمية، السير الذاتية والمزيد</p>
+            
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="ابحث عن قوالب...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container" id="mainContent">
+        <div class="categories">
+            <button class="category-btn active" data-category="الكل">الكل</button>
+            <button class="category-btn" data-category="مواقع ويب">مواقع ويب</button>
+            <button class="category-btn" data-category="عروض تقديمية">عروض تقديمية</button>
+            <button class="category-btn" data-category="مستندات">مستندات</button>
+            <button class="category-btn" data-category="تصاميم">تصاميم</button>
+            <button class="category-btn" data-category="أكواد برمجية">أكواد برمجية</button>
+        </div>
+        
+        <div class="templates-grid" id="templatesGrid">
+            <!-- سيتم ملؤها بالقالب من JavaScript -->
+        </div>
+        
+        <button class="btn btn-primary" id="uploadBtn" style="margin: 0 auto; display: block;">
+            <i class="fas fa-upload"></i>
+            <span>رفع قالب جديد</span>
+        </button>
+    </main>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <div class="container">
+            <h2>لوحة تحكم المشرف</h2>
+            <!-- سيتم ملؤها بالقالب من JavaScript -->
+        </div>
+    </div>
+
+    <!-- Template Modal -->
+    <div class="modal" id="templateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTemplateTitle">عنوان القالب</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="Template Preview" class="modal-image" id="modalTemplateImage">
+                
+                <div class="modal-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">التصنيف</div>
+                        <div class="meta-value" id="modalTemplateCategory">مواقع ويب</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">تاريخ النشر</div>
+                        <div class="meta-value" id="modalTemplateDate">01/01/2023</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">عدد التحميلات</div>
+                        <div class="meta-value" id="modalTemplateDownloads">1,245</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">السعر</div>
+                        <div class="meta-value" id="modalTemplatePrice">مجاني</div>
+                    </div>
+                </div>
+                
+                <div class="modal-description" id="modalTemplateDescription">
+                    وصف مفصل للقالب يوضح ميزاته واستخداماته...
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="modalPreviewBtn">
+                    <i class="fas fa-eye"></i>
+                    معاينة
+                </button>
+                <button class="btn btn-primary" id="modalDownloadBtn">
+                    <i class="fas fa-download"></i>
+                    تحميل
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">رفع قالب جديد</h3>
+                <button class="close-modal" id="closeUpload">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm" class="upload-form">
+                    <div class="form-group">
+                        <label for="templateTitle" class="form-label">عنوان القالب</label>
+                        <input type="text" id="templateTitle" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="templateCategory" class="form-label">التصنيف</label>
+                        <select id="templateCategory" class="form-control" required>
+                            <option value="">اختر تصنيف...</option>
+                            <option value="مواقع ويب">مواقع ويب</option>
+                            <option value="عروض تقديمية">عروض تقديمية</option>
+                            <option value="مستندات">مستندات</option>
+                            <option value="تصاميم">تصاميم</option>
+                            <option value="أكواد برمجية">أكواد برمجية</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="templateDescription" class="form-label">الوصف</label>
+                        <textarea id="templateDescription" class="form-control" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="templatePrice" class="form-label">السعر (اختياري)</label>
+                        <input type="number" id="templatePrice" class="form-control" min="0" step="0.01" placeholder="0 للقوالب المجانية">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="templateImageUrl" class="form-label">رابط صورة المعاينة (اختياري)</label>
+                        <input type="url" id="templateImageUrl" class="form-control" placeholder="https://example.com/image.jpg">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">ملف القالب (الحد الأقصى 50MB)</label>
+                        <div class="file-upload" id="fileUpload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>انقر لرفع ملف أو اسحبه هنا</p>
+                            <span class="file-name" id="fileName">لم يتم اختيار ملف</span>
+                            <input type="file" id="templateFile" style="display: none;" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
+                        <i class="fas fa-upload"></i>
+                        رفع القالب
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="authModalTitle">تسجيل الدخول</h3>
+                <button class="close-modal" id="closeAuth">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" id="loginTab">تسجيل الدخول</div>
+                    <div class="auth-tab" id="registerTab">حساب جديد</div>
+                </div>
+                
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginUsername" class="form-label">اسم المستخدم</label>
+                        <input type="text" id="loginUsername" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">كلمة المرور</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل الدخول
+                    </button>
+                    
+                    <div class="form-footer">
+                        ليس لديك حساب؟ <span class="switch-auth" id="switchToRegister">سجل الآن</span>
+                    </div>
+                </form>
+                
+                <form id="registerForm" class="auth-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="registerName" class="form-label">الاسم الكامل</label>
+                        <input type="text" id="registerName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerUsername" class="form-label">اسم المستخدم</label>
+                        <input type="text" id="registerUsername" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerEmail" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" id="registerEmail" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword" class="form-label">كلمة المرور</label>
+                        <input type="password" id="registerPassword" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        إنشاء حساب
+                    </button>
+                    
+                    <div class="form-footer">
+                        لديك حساب بالفعل؟ <span class="switch-auth" id="switchToLogin">سجل الدخول</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h3 class="admin-title">لوحة التحكم</h3>
+            <button class="admin-close" id="adminCloseBtn">&times;</button>
+        </div>
+        
+        <div class="admin-nav">
+            <ul class="admin-nav-list">
+                <li class="admin-nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>لوحة التحكم</span>
+                </li>
+                <li class="admin-nav-item" data-section="templates">
+                    <i class="fas fa-file-alt"></i>
+                    <span>إدارة القوالب</span>
+                </li>
+                <li class="admin-nav-item" data-section="users">
+                    <i class="fas fa-users"></i>
+                    <span>إدارة المستخدمين</span>
+                </li>
+                <li class="admin-nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="admin-content">
+            <div id="adminDashboardSection">
+                <h3>نظرة عامة</h3>
+                
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalTemplates">0</div>
+                        <div class="stat-label">إجمالي القوالب</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div class="stat-label">إجمالي المستخدمين</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalDownloads">0</div>
+                        <div class="stat-label">إجمالي التحميلات</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalRevenue">$0</div>
+                        <div class="stat-label">إجمالي الإيرادات</div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 30px;">آخر القوالب المضافة</h3>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>العنوان</th>
+                            <th>المؤلف</th>
+                            <th>التصنيف</th>
+                            <th>الحالة</th>
+                            <th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentTemplates">
+                        <!-- سيتم ملؤها بالقالب من JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="adminTemplatesSection" style="display: none;">
+                <h3>إدارة القوالب</h3>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>العنوان</th>
+                            <th>المؤلف</th>
+                            <th>التصنيف</th>
+                            <th>الحالة</th>
+                            <th>التاريخ</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="allTemplates">
+                        <!-- سيتم ملؤها بالقالب من JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="adminUsersSection" style="display: none;">
+                <h3>إدارة المستخدمين</h3>
+                <p>هذه الصفحة قيد التطوير...</p>
+            </div>
+            
+            <div id="adminSettingsSection" style="display: none;">
+                <h3>الإعدادات</h3>
+                <p>هذه الصفحة قيد التطوير...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ProTemplate Hub</h3>
+                    <p>منصة متكاملة لتحميل ومشاركة القوالب الجاهزة لمواقع الويب، العروض التقديمية، السير الذاتية والمزيد</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">استكشف القوالب</a></li>
+                        <li><a href="#">رفع قالب</a></li>
+                        <li><a href="#">التسعير</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>التصنيفات</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">مواقع ويب</a></li>
+                        <li><a href="#">عروض تقديمية</a></li>
+                        <li><a href="#">مستندات</a></li>
+                        <li><a href="#">تصاميم</a></li>
+                        <li><a href="#">أكواد برمجية</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>الدعم</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">الإبلاغ عن مشكلة</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 ProTemplate Hub. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // =============================================
+        // قاعدة البيانات المدمجة باستخدام localStorage
+        // =============================================
+
+        // تهيئة قاعدة البيانات إذا لم تكن موجودة
+        function initDatabase() {
+            if (!localStorage.getItem('templateHubDB')) {
+                const db = {
+                    users: [
+                        {
+                            id: 1,
+                            username: 'dhyaa',
+                            name: 'الظل الصامت',
+                            email: 'dhyaa@protemplatehub.com',
+                            password: 'dhyaa1234', // في الواقع يجب تخزينها مشفرة
+                            avatar: '',
+                            role: 'admin',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        }
+                    ],
+                    templates: [
+                        {
+                            id: 1,
+                            user_id: 1,
+                            title: 'قالب موقع شخصي احترافي',
+                            category: 'مواقع ويب',
+                            description: 'قالب متكامل لموقع شخصي أو سيرة ذاتية عبر الإنترنت',
+                            price: 0,
+                            file_path: 'sample1.zip',
+                            file_name: 'personal-website-template.zip',
+                            image_url: 'https://via.placeholder.com/600x400?text=Website+Template',
+                            downloads: 1245,
+                            status: 'published',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        },
+                        {
+                            id: 2,
+                            user_id: 1,
+                            title: 'سيرة ذاتية حديثة',
+                            category: 'مستندات',
+                            description: 'نموذج سيرة ذاتية بتصميم عصري ومنظم',
+                            price: 0,
+                            file_path: 'sample2.zip',
+                            file_name: 'modern-cv-template.zip',
+                            image_url: 'https://via.placeholder.com/600x400?text=CV+Template',
+                            downloads: 876,
+                            status: 'published',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        },
+                        {
+                            id: 3,
+                            user_id: 1,
+                            title: 'عرض تقديمي احترافي',
+                            category: 'عروض تقديمية',
+                            description: 'مجموعة شرائح بتصميم أنيق واحترافي',
+                            price: 15.00,
+                            file_path: 'sample3.zip',
+                            file_name: 'professional-presentation.zip',
+                            image_url: 'https://via.placeholder.com/600x400?text=Presentation',
+                            downloads: 1562,
+                            status: 'published',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        },
+                        {
+                            id: 4,
+                            user_id: 1,
+                            title: 'تصاميم إنستغرام 2023',
+                            category: 'تصاميم',
+                            description: 'حزمة كاملة من 20 تصميمًا جاهزًا لمنشورات إنستغرام',
+                            price: 25.00,
+                            file_path: 'sample4.zip',
+                            file_name: 'instagram-designs-2023.zip',
+                            image_url: 'https://via.placeholder.com/600x400?text=Instagram+Designs',
+                            downloads: 892,
+                            status: 'published',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        },
+                        {
+                            id: 5,
+                            user_id: 1,
+                            title: 'هيكل متجر إلكتروني',
+                            category: 'أكواد برمجية',
+                            description: 'هيكل متكامل لموقع تجارة إلكترونية',
+                            price: 0,
+                            file_path: 'sample5.zip',
+                            file_name: 'ecommerce-starter-kit.zip',
+                            image_url: 'https://via.placeholder.com/600x400?text=Ecommerce',
+                            downloads: 2034,
+                            status: 'published',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        }
+                    ]
+                };
+                
+                localStorage.setItem('templateHubDB', JSON.stringify(db));
+            }
+        }
+
+        // الحصول على قاعدة البيانات
+        function getDatabase() {
+            return JSON.parse(localStorage.getItem('templateHubDB'));
+        }
+
+        // حفظ قاعدة البيانات
+        function saveDatabase(db) {
+            localStorage.setItem('templateHubDB', JSON.stringify(db));
+        }
+
+        // =============================================
+        // تطبيق ProTemplate Hub
+        // =============================================
+
+        // بيانات التطبيق
+        let templates = [];
+        let currentTemplate = null;
+        let isAdminLoggedIn = false;
+        let currentUser = null;
+
+        // عناصر DOM
+        const templatesGrid = document.getElementById('templatesGrid');
+        const templateModal = document.getElementById('templateModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalTemplateTitle = document.getElementById('modalTemplateTitle');
+        const modalTemplateImage = document.getElementById('modalTemplateImage');
+        const modalTemplateDescription = document.getElementById('modalTemplateDescription');
+        const modalTemplateCategory = document.getElementById('modalTemplateCategory');
+        const modalTemplateDate = document.getElementById('modalTemplateDate');
+        const modalTemplateDownloads = document.getElementById('modalTemplateDownloads');
+        const modalTemplatePrice = document.getElementById('modalTemplatePrice');
+        const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+        const modalPreviewBtn = document.getElementById('modalPreviewBtn');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const uploadModal = document.getElementById('uploadModal');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const closeUploadBtn = document.getElementById('closeUpload');
+        const uploadForm = document.getElementById('uploadForm');
+        const fileUpload = document.getElementById('fileUpload');
+        const templateFile = document.getElementById('templateFile');
+        const fileName = document.getElementById('fileName');
+        const authModal = document.getElementById('authModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const authModalTitle = document.getElementById('authModalTitle');
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const modeToggle = document.getElementById('modeToggle');
+        const adminPanel = document.getElementById('adminPanel');
+        const adminButtons = document.getElementById('adminButtons');
+        const authButtons = document.getElementById('authButtons');
+        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+        const adminCloseBtn = document.getElementById('adminCloseBtn');
+        const adminPanelBtn = document.getElementById('adminPanelBtn');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const mainContent = document.getElementById('mainContent');
+        const searchInput = document.querySelector('.search-input');
+        const searchBtn = document.querySelector('.search-btn');
+        const closeAuthBtn = document.getElementById('closeAuth');
+        
+        // عناصر لوحة التحكم
+        const adminNavItems = document.querySelectorAll('.admin-nav-item');
+        const adminDashboardSection = document.getElementById('adminDashboardSection');
+        const adminTemplatesSection = document.getElementById('adminTemplatesSection');
+        const adminUsersSection = document.getElementById('adminUsersSection');
+        const adminSettingsSection = document.getElementById('adminSettingsSection');
+        const totalTemplatesEl = document.getElementById('totalTemplates');
+        const totalUsersEl = document.getElementById('totalUsers');
+        const totalDownloadsEl = document.getElementById('totalDownloads');
+        const totalRevenueEl = document.getElementById('totalRevenue');
+        const recentTemplatesEl = document.getElementById('recentTemplates');
+        const allTemplatesEl = document.getElementById('allTemplates');
+
+        // حالة التطبيق
+        let currentCategory = 'الكل';
+        let isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+
+        // تطبيق وضع الليل إذا كان مفعلاً
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+            modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // عرض القوالب
+        function displayTemplates(templatesToDisplay = templates) {
+            try {
+                const db = getDatabase();
+                templates = db.templates.map(template => {
+                    const user = db.users.find(u => u.id === template.user_id);
+                    return {
+                        ...template,
+                        author: user ? user.username : 'مستخدم مجهول',
+                        authorAvatar: user ? user.avatar : ''
+                    };
+                });
+                
+                templatesToDisplay = templates;
+                
+                templatesGrid.innerHTML = '';
+                
+                templatesToDisplay.forEach(template => {
+                    const templateCard = document.createElement('div');
+                    templateCard.className = 'template-card';
+                    templateCard.innerHTML = `
+                        <div class="template-image">
+                            <img src="${template.image_url}" alt="${template.title}" loading="lazy">
+                            <span class="template-badge">${template.category}</span>
+                        </div>
+                        <div class="template-content">
+                            <h3 class="template-title">${template.title}</h3>
+                            <div class="template-author">
+                                <img src="${template.authorAvatar || 'https://via.placeholder.com/25'}" alt="${template.author}" class="author-avatar">
+                                <span>${template.author}</span>
+                            </div>
+                            <div class="template-stats">
+                                <div class="stat">
+                                    <i class="fas fa-download"></i>
+                                    <span>${template.downloads.toLocaleString()}</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>${new Date(template.createdAt).toLocaleDateString('ar-EG')}</span>
+                                </div>
+                            </div>
+                            <p class="template-description">${template.description}</p>
+                            <div class="template-actions">
+                                <span class="template-price">${template.price > 0 ? `$${template.price}` : 'مجاني'}</span>
+                                <a href="#" class="download-btn" data-id="${template.id}">
+                                    <i class="fas fa-download"></i> تحميل
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    templatesGrid.appendChild(templateCard);
+                });
+
+                // إضافة مستمعي الأحداث لأزرار التحميل
+                document.querySelectorAll('.download-btn').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const templateId = parseInt(btn.getAttribute('data-id'));
+                        const template = templates.find(t => t.id === templateId);
+                        if (template) {
+                            await downloadTemplate(template);
+                        }
+                    });
+                });
+
+                // إضافة مستمعي الأحداث لبطاقات القوالب
+                document.querySelectorAll('.template-card').forEach((card, index) => {
+                    card.addEventListener('click', (e) => {
+                        if (!e.target.classList.contains('download-btn')) {
+                            openTemplateModal(templatesToDisplay[index]);
+                        }
+                    });
+                });
+
+            } catch (error) {
+                console.error('Error fetching templates:', error);
+                showAlert('حدث خطأ أثناء جلب القوالب', 'error');
+            }
+        }
+
+        // فتح نافذة القالب
+        function openTemplateModal(template) {
+            currentTemplate = template;
+            modalTemplateTitle.textContent = template.title;
+            modalTemplateImage.src = template.image_url;
+            modalTemplateDescription.textContent = template.description;
+            modalTemplateCategory.textContent = template.category;
+            modalTemplateDate.textContent = new Date(template.created_at).toLocaleDateString('ar-EG');
+            modalTemplateDownloads.textContent = template.downloads.toLocaleString();
+            modalTemplatePrice.textContent = template.price > 0 ? `$${template.price}` : 'مجاني';
+            
+            // تحديث زر التحميل
+            modalDownloadBtn.setAttribute('data-id', template.id);
+            
+            templateModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // إغلاق جميع النوافذ المنبثقة
+        function closeAllModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        // تحميل القالب
+        async function downloadTemplate(template) {
+            try {
+                // التحقق من تسجيل الدخول
+                if (!currentUser) {
+                    showAlert('يجب تسجيل الدخول لتحميل القوالب', 'warning');
+                    authModal.classList.add('active');
+                    return;
+                }
+                
+                // زيادة عدد التحميلات
+                const db = getDatabase();
+                const templateIndex = db.templates.findIndex(t => t.id === template.id);
+                if (templateIndex !== -1) {
+                    db.templates[templateIndex].downloads += 1;
+                    db.templates[templateIndex].updatedAt = new Date().toISOString();
+                    saveDatabase(db);
+                }
+                
+                // محاكاة عملية التحميل
+                showAlert('جارٍ تحميل القالب: ' + template.title, 'info');
+                
+                // تحديث عدد التحميلات محلياً
+                template.downloads++;
+                const downloadBtn = document.querySelector(`.download-btn[data-id="${template.id}"]`);
+                if (downloadBtn) {
+                    const stats = downloadBtn.closest('.template-actions').previousElementSibling.querySelector('.stat span');
+                    stats.textContent = template.downloads.toLocaleString();
+                }
+                
+            } catch (error) {
+                console.error('Error downloading template:', error);
+                showAlert('حدث خطأ أثناء التحميل', 'error');
+            }
+        }
+
+        // تسجيل الدخول
+        async function login(username, password) {
+            try {
+                const db = getDatabase();
+                const user = db.users.find(u => u.username === username && u.password === password);
+                
+                if (user) {
+                    currentUser = user;
+                    
+                    if (user.role === 'admin') {
+                        loginAsAdmin();
+                    }
+                    
+                    showAlert('تم تسجيل الدخول بنجاح', 'success');
+                    closeAllModals();
+                    
+                    // تحديث واجهة المستخدم
+                    authButtons.style.display = 'none';
+                    if (user.role === 'admin') {
+                        adminButtons.style.display = 'flex';
+                    }
+                    
+                    return true;
+                } else {
+                    throw new Error('اسم المستخدم أو كلمة المرور غير صحيحة');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert(error.message || 'حدث خطأ أثناء تسجيل الدخول', 'error');
+                return false;
+            }
+        }
+
+        // تسجيل مستخدم جديد
+        async function register(name, username, email, password) {
+            try {
+                const db = getDatabase();
+                
+                // التحقق من عدم وجود مستخدم بنفس البيانات
+                const existingUser = db.users.find(u => u.username === username || u.email === email);
+                if (existingUser) {
+                    throw new Error('اسم المستخدم أو البريد الإلكتروني موجود بالفعل');
+                }
+                
+                // إنشاء مستخدم جديد
+                const newUser = {
+                    id: db.users.length + 1,
+                    username,
+                    name,
+                    email,
+                    password, // في الواقع يجب تشفيرها
+                    avatar: '',
+                    role: 'user',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                
+                db.users.push(newUser);
+                saveDatabase(db);
+                
+                showAlert('تم إنشاء الحساب بنجاح', 'success');
+                switchToLogin.click();
+                return true;
+            } catch (error) {
+                console.error('Register error:', error);
+                showAlert(error.message || 'حدث خطأ أثناء إنشاء الحساب', 'error');
+                return false;
+            }
+        }
+
+        // تسجيل الدخول كمدير
+        function loginAsAdmin() {
+            isAdminLoggedIn = true;
+            adminButtons.style.display = 'flex';
+            authButtons.style.display = 'none';
+            loadAdminStats();
+        }
+
+        // تسجيل خروج المدير
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            currentUser = null;
+            adminButtons.style.display = 'none';
+            authButtons.style.display = 'flex';
+            adminPanel.classList.remove('active');
+            showAlert('تم تسجيل الخروج بنجاح', 'success');
+        }
+
+        // تحميل إحصائيات لوحة التحكم
+        function loadAdminStats() {
+            try {
+                const db = getDatabase();
+                
+                // تحديث الإحصائيات
+                totalTemplatesEl.textContent = db.templates.length;
+                totalUsersEl.textContent = db.users.length;
+                totalDownloadsEl.textContent = db.templates.reduce((sum, t) => sum + t.downloads, 0);
+                totalRevenueEl.textContent = `$${db.templates.reduce((sum, t) => sum + t.price, 0)}`;
+                
+                // تحديث آخر القوالب المضافة
+                recentTemplatesEl.innerHTML = '';
+                const recentTemplates = [...db.templates].reverse().slice(0, 5);
+                recentTemplates.forEach(template => {
+                    const user = db.users.find(u => u.id === template.user_id);
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${template.title}</td>
+                        <td>${user ? user.username : 'مجهول'}</td>
+                        <td>${template.category}</td>
+                        <td class="status-${template.status}">${getStatusText(template.status)}</td>
+                        <td>${new Date(template.createdAt).toLocaleDateString('ar-EG')}</td>
+                    `;
+                    recentTemplatesEl.appendChild(row);
+                });
+                
+                // تحديث جميع القوالب
+                allTemplatesEl.innerHTML = '';
+                db.templates.forEach(template => {
+                    const user = db.users.find(u => u.id === template.user_id);
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${template.title}</td>
+                        <td>${user ? user.username : 'مجهول'}</td>
+                        <td>${template.category}</td>
+                        <td class="status-${template.status}">${getStatusText(template.status)}</td>
+                        <td>${new Date(template.createdAt).toLocaleDateString('ar-EG')}</td>
+                        <td>
+                            <button class="action-btn" data-id="${template.id}" data-action="edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn" data-id="${template.id}" data-action="delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    allTemplatesEl.appendChild(row);
+                });
+                
+            } catch (error) {
+                console.error('Error loading admin stats:', error);
+                showAlert('حدث خطأ أثناء تحميل إحصائيات لوحة التحكم', 'error');
+            }
+        }
+
+        // الحصول على نص الحالة
+        function getStatusText(status) {
+            const statusMap = {
+                'published': 'منشور',
+                'pending': 'قيد الانتظار',
+                'rejected': 'مرفوض'
+            };
+            return statusMap[status] || status;
+        }
+
+        // رفع قالب جديد
+        async function uploadTemplate(formData) {
+            try {
+                if (!currentUser) {
+                    showAlert('يجب تسجيل الدخول لرفع القوالب', 'warning');
+                    authModal.classList.add('active');
+                    return false;
+                }
+                
+                const title = formData.get('title');
+                const category = formData.get('category');
+                const description = formData.get('description');
+                const price = parseFloat(formData.get('price')) || 0;
+                const imageUrl = formData.get('imageUrl') || 'https://via.placeholder.com/600x400?text=Template+Preview';
+                const file = formData.get('templateFile');
+                
+                if (!title || !category || !description || !file) {
+                    throw new Error('جميع الحقول المطلوبة');
+                }
+                
+                const db = getDatabase();
+                const newTemplate = {
+                    id: db.templates.length + 1,
+                    user_id: currentUser.id,
+                    title,
+                    category,
+                    description,
+                    price,
+                    file_path: file.name,
+                    file_name: file.name,
+                    image_url: imageUrl,
+                    downloads: 0,
+                    status: currentUser.role === 'admin' ? 'published' : 'pending',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                
+                db.templates.push(newTemplate);
+                saveDatabase(db);
+                
+                showAlert('تم رفع القالب بنجاح' + (currentUser.role !== 'admin' ? ' وسيتم مراجعته من قبل الإدارة' : ''), 'success');
+                closeAllModals();
+                displayTemplates();
+                return true;
+            } catch (error) {
+                console.error('Upload error:', error);
+                showAlert(error.message || 'حدث خطأ أثناء رفع القالب', 'error');
+                return false;
+            }
+        }
+
+        // عرض تنبيه
+        function showAlert(message, type = 'info') {
+            // يمكن استبدال هذا بتنفيذ أكثر تطوراً مثل استخدام مكتبة SweetAlert
+            alert(`${type.toUpperCase()}: ${message}`);
+        }
+
+        // تبديل وضع الليل/النهار
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode');
+            
+            if (isDarkMode) {
+                localStorage.setItem('darkMode', 'enabled');
+                modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.removeItem('darkMode');
+                modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // تهيئة التطبيق
+        async function init() {
+            // تهيئة قاعدة البيانات
+            initDatabase();
+            
+            // التحقق من تسجيل الدخول
+            if (currentUser) {
+                if (currentUser.role === 'admin') {
+                    loginAsAdmin();
+                }
+            }
+            
+            // عرض القوالب
+            displayTemplates();
+            
+            // إضافة مستمعي الأحداث
+            closeModalBtn.addEventListener('click', closeAllModals);
+            closeUploadBtn.addEventListener('click', closeAllModals);
+            closeAuthBtn.addEventListener('click', closeAllModals);
+            
+            // تصفية القوالب حسب التصنيف
+            categoryButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.getAttribute('data-category');
+                    
+                    if (currentCategory === 'الكل') {
+                        displayTemplates();
+                    } else {
+                        const filtered = templates.filter(t => t.category === currentCategory);
+                        displayTemplates(filtered);
+                    }
+                });
+            });
+            
+            // فتح نافذة الرفع
+            uploadBtn.addEventListener('click', () => {
+                if (!currentUser) {
+                    showAlert('يجب تسجيل الدخول لرفع القوالب', 'warning');
+                    authModal.classList.add('active');
+                    return;
+                }
+                uploadModal.classList.add('active');
+            });
+            
+            // اختيار ملف للرفع
+            fileUpload.addEventListener('click', () => templateFile.click());
+            templateFile.addEventListener('change', () => {
+                if (templateFile.files.length > 0) {
+                    fileName.textContent = templateFile.files[0].name;
+                } else {
+                    fileName.textContent = 'لم يتم اختيار ملف';
+                }
+            });
+            
+            // تقديم نموذج الرفع
+            uploadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData();
+                formData.append('title', document.getElementById('templateTitle').value);
+                formData.append('category', document.getElementById('templateCategory').value);
+                formData.append('description', document.getElementById('templateDescription').value);
+                formData.append('price', document.getElementById('templatePrice').value);
+                formData.append('imageUrl', document.getElementById('templateImageUrl').value);
+                formData.append('templateFile', templateFile.files[0]);
+                
+                await uploadTemplate(formData);
+            });
+            
+            // فتح نافذة تسجيل الدخول
+            loginBtn.addEventListener('click', () => {
+                authModal.classList.add('active');
+                loginTab.click();
+            });
+            
+            // فتح نافذة التسجيل
+            registerBtn.addEventListener('click', () => {
+                authModal.classList.add('active');
+                registerTab.click();
+            });
+            
+            // تبديل بين تسجيل الدخول والتسجيل
+            switchToRegister.addEventListener('click', () => registerTab.click());
+            switchToLogin.addEventListener('click', () => loginTab.click());
+            
+            loginTab.addEventListener('click', () => {
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                loginForm.style.display = 'flex';
+                registerForm.style.display = 'none';
+                authModalTitle.textContent = 'تسجيل الدخول';
+            });
+            
+            registerTab.addEventListener('click', () => {
+                registerTab.classList.add('active');
+                loginTab.classList.remove('active');
+                registerForm.style.display = 'flex';
+                loginForm.style.display = 'none';
+                authModalTitle.textContent = 'حساب جديد';
+            });
+            
+            // تقديم نموذج تسجيل الدخول
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                await login(username, password);
+            });
+            
+            // تقديم نموذج التسجيل
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const name = document.getElementById('registerName').value;
+                const username = document.getElementById('registerUsername').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                await register(name, username, email, password);
+            });
+            
+            // تبديل وضع الليل/النهار
+            modeToggle.addEventListener('click', toggleDarkMode);
+            
+            // إدارة لوحة التحكم
+            adminPanelBtn.addEventListener('click', () => {
+                adminPanel.classList.add('active');
+            });
+            
+            adminCloseBtn.addEventListener('click', () => {
+                adminPanel.classList.remove('active');
+            });
+            
+            adminLogoutBtn.addEventListener('click', logoutAdmin);
+            
+            // التنقل في لوحة التحكم
+            adminNavItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    adminNavItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    
+                    const section = item.getAttribute('data-section');
+                    adminDashboardSection.style.display = 'none';
+                    adminTemplatesSection.style.display = 'none';
+                    adminUsersSection.style.display = 'none';
+                    adminSettingsSection.style.display = 'none';
+                    
+                    if (section === 'dashboard') {
+                        adminDashboardSection.style.display = 'block';
+                    } else if (section === 'templates') {
+                        adminTemplatesSection.style.display = 'block';
+                    } else if (section === 'users') {
+                        adminUsersSection.style.display = 'block';
+                    } else if (section === 'settings') {
+                        adminSettingsSection.style.display = 'block';
+                    }
+                });
+            });
+            
+            // البحث عن القوالب
+            searchBtn.addEventListener('click', () => {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                if (searchTerm) {
+                    const filtered = templates.filter(t => 
+                        t.title.toLowerCase().includes(searchTerm) || 
+                        t.description.toLowerCase().includes(searchTerm) ||
+                        t.category.toLowerCase().includes(searchTerm)
+                    );
+                    displayTemplates(filtered);
+                } else {
+                    displayTemplates();
+                }
+            });
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+            
+            // إغلاق النوافذ عند النقر خارجها
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal')) {
+                    closeAllModals();
+                }
+            });
+        }
+
+        // بدء التطبيق
+        init();
+    </script>
+</body>
+</html>
